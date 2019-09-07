@@ -1,0 +1,104 @@
+{% extends "layout.html" %}
+{% block content %}
+<style>
+
+    .custom-button{
+        color: rgb(0, 0, 0)
+    }
+    .custom-button:hover{
+        color: rgb(0, 123, 255) !important
+    }
+
+.signuplogin{
+width:100%;
+text-decoration:none;
+padding: 10px;
+/* background-color: rgba(65, 201, 180, 0.65) !important; */
+background-color: rgba(197, 76, 29, 0.65)!important;
+color:#dddddd;
+text-align:center;
+cursor:pointer;
+transition:.5s ease;
+}
+.signuplogin:hover {
+  /* background:#01986F; */
+  color:#ffffff;
+  /* background-color:#1fd4a4 !important; */
+  background-color: rgba(240, 93, 34, 1) !important; 
+}
+
+.activebutton {
+background:#1ab188;
+color:white;
+}
+ @media only screen and (max-device-width: 480px) {
+  .show-mobile {
+    display: block;
+  }
+  .hide-mobile {
+    display: none;
+  }
+  .mover{
+    margin-left:0;
+  }
+}
+
+@media only screen and (min-device-width: 481px) {
+  .show-mobile {
+    display: none;
+  }
+  .hide-mobile {
+    display: block;
+  }
+  .mover{
+    margin-left:-10%
+  }
+}
+</style>
+<br>
+<div class="container" style="text-align: center;">
+
+    <div class = "row">
+                <div class="col-sm-8 offset-sm-2 col-md-8 offset-md-2 col-lg-8 offset-lg-2">
+                    <h1 style="align-content: center; color: #ffffff !important;" class="text-center"><img src="{{url_for('static', filename='img/logo.PNG')}}" class = "mover" alt="logo"> Transaction Trends</h1>
+                </div>
+    </div>
+    <a href="/update"><button style="background-color: white" type="button" class="btn custom-button btn-outline-primary"><h2 style= "align-content: center" class="text-center">Update info</h2></button></a> 
+    <br>
+    <br>
+    {% if current_user.user.active == True %}
+        <a href="/disable"><button style="background-color: white" type="button" class="btn custom-button btn-outline-primary"><h2 style= "align-content: center" class="text-center">Disable Messaging</h2></button></a>
+        <br>
+        <br>
+    {% else %}
+    <a href="/enable"><button style="background-color: white" type="button" class="btn custom-button btn-outline-primary"><h2 style= "align-content: center" class="text-center">Enable Messaging</h2></button></a>
+    <br>
+    <br>
+    {% endif %}
+    <a href="/logout"><button style="background-color: white" type="button" class="btn custom-button btn-outline-primary"><h2 style= "align-content: center" class="text-center">Logout</h2></button></a> 
+    <br>
+    <br>
+    <a id="delete" href="/delete" onclick="return confirm_value()"><button style="background-color: white" type="button" class="btn custom-button btn-outline-primary"><h2 style= "align-content: center" class="text-center">Delete user</h2></button></a>
+    <br>
+    <br>
+    {% if date == True %}
+        <a href="/renew"><button style="background-color: white" type="button" class="btn custom-button btn-outline-primary"><h2 style= "align-content: center" class="text-center">Renew</h2></button></a>
+        <br>
+        <br>
+    {% endif %}
+    {% if current_user.user.admin_account == True %}
+        <a href="/admin"><button style="background-color: white" type="button" class="btn custom-button btn-outline-primary"><h2 style= "align-content: center" class="text-center">Admin Portal</h2></button></a>
+        <br>
+        <br>
+    {% endif %}
+    <br>
+</div>
+<script>
+function confirm_value(){
+    if (confirm("By clicking \"OK\" you will delete your account")){
+        return true
+    }
+    return false
+}
+</script>   
+{% endblock %}

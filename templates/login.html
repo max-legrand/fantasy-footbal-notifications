@@ -1,0 +1,83 @@
+{% extends "layout.html" %}
+{% block content %}
+<style>
+@media only screen and (max-device-width: 480px) {
+    .show-mobile {
+    display: block;
+    }
+    .hide-mobile {
+    display: none;
+    }
+    .backdrop-color{
+        background-color: rgba(255, 255, 255, 0.75);
+    }
+}
+
+@media only screen and (min-device-width: 481px) {
+    .show-mobile {
+    display: none;
+    }
+    .hide-mobile {
+    display: block;
+    }
+    .backdrop-color{
+        background-color: rgba(255, 255, 255, 1);
+    }
+}
+
+</style>
+<br>
+<div class="container">
+
+ 
+    <div class="row">
+            <div class="col-sm-4 offset-sm-4 col-md-4 offset-md-4 col-lg-4 offset-lg-4 backdrop-color" style="border-radius: 5px; padding-top: 2.5px;">
+                <h1 style="margin-left: auto; margin-right: auto; text-align: center" >Login</h1>
+                <br>
+                <form class="form-inlin justify-content-center" action="/login_user" method="POST" onsubmit="return validate()">
+                <!-- https://smith.ai/blog/how-send-email-text-message-and-text-via-email -->
+                    <label for="email">Email</label>
+                    <br>
+                    <!-- <div class="col-12"> -->
+                    <input style="margin-left: auto; margin-right: auto; text-align: center" type="text" class = "form-control" name="email" id = "email">
+                    <!-- </div> -->
+                    <br>
+                    <label for="password">Password</label>
+                    <br>
+                    <!-- <div class="col-12"> -->
+                    <input type="password" style="margin-left: auto; margin-right: auto; text-align: center" name="password"  class = "form-control" id = "password">
+                    <!-- </div> -->
+                    <br>
+                    <div style= "align-content: center; text-align: center" class="text-center">
+                    <input type="checkbox" class="form-check-input" id="remember_me" name="remember_me">
+                    <label class="form-check-label" for="remember_me">Remember me</label>
+                    </div>
+                    <br>
+                    <div style= "align-content: center; text-align: center" class="text-center">
+                    <input type="submit" class="btn btn-primary text-center center-block" value = "Next">
+                    </div>
+                    <br>
+                </form>
+                <br>
+
+            </div>
+        </div>
+</div>
+
+<script type="text/javascript">
+function validate(){
+    password = document.getElementById("password").value
+    password = md5(password)
+    document.getElementById("password").value = password
+    return true
+}
+</script>
+
+<script>
+    function setCookie(key, value)  
+    {  
+        document.cookie = key + "=" + value + "; path=/";  
+    }  
+</script>
+
+{% endblock %}

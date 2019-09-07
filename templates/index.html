@@ -1,0 +1,46 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="//code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>
+<div class="container">
+    <br>
+    <h1 id = "update">
+        {{top}}
+    </h1>
+    <form id = "form" method="post" action="/sub" id="FORM" onsubmit=""> 
+    <input type="text" class = "form-text" name = "update" id="update">
+    <br>
+    <input class = "btn-primary btn" type="submit" id ="submit" value="Submit">
+    </form>
+</div>
+
+
+<script>
+
+
+  $(document).ready(function() {
+        namespace = '';
+        var socket = io(namespace);
+        socket.on('connect', function() {
+            socket.emit('event', {data: 'Successfully connected!'});
+        });
+
+        socket.on('ahoy', function(msg) {
+                console.log(msg)
+
+                // $('#update').append('<br>' + $('<div/>').text('Received'  + ': ' + msg.data).html());
+                $('#update').text(msg.data);
+            });
+        
+        // socket.on('howdy', function(msg) {
+        //         console.log(msg)
+        //         $('#log').append('<br>' + $('<div/>').text('Received'  + ': ' + msg.counter).html());
+                
+                
+        //     });
+        // socket.on("testing123", function(msg){
+        //     console.log(msg)
+        // })
+        
+  })
+
+</script>

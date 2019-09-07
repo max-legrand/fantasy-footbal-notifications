@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="//code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>
+    <script src="{{ url_for('static', filename='js/sorttable.js') }}"></script>
+    <title>Transaction Trends</title>
+</head>
+<body>
+    <br>
+    <div class="container">
+       <table class="table sortable">
+        <thead>
+           <tr>
+               <th>
+                   Player Name
+               </th>
+               <th>
+                   adds
+               </th>
+               <th>
+                   drops
+               </th>
+               <th>
+                   trades
+               </th>
+               <th>
+                   total
+               </th>
+               <th>
+                   called
+               </th>
+           </tr>
+           </thead>
+           <tbody>
+           {% for player in players %}
+           <tr>
+                <td>
+                    {{player.player_name}}
+                </td>
+                <td>
+                    {{player.adds}}
+                </td>
+                <td>
+                    {{player.drops}}
+                </td>
+                <td>
+                    {{player.trades}}
+                </td>
+                <td>
+                    {{player.total}}
+                </td>
+                <td>
+                    {{player.called}}
+                </td>
+           </tr>
+           {% endfor %}
+        </tbody>
+       </table>
+    </div>
+</body>
+</html>

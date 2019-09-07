@@ -1,0 +1,238 @@
+{% extends "layout.html" %}
+{% block content %}
+<style>
+@media only screen and (max-device-width: 480px) {
+    .show-mobile {
+    display: block;
+    }
+    .hide-mobile {
+    display: none;
+    }
+    .backdrop-color{
+        background-color: rgba(255, 255, 255, 0.75);
+    }
+}
+
+@media only screen and (min-device-width: 481px) {
+    .show-mobile {
+    display: none;
+    }
+    .hide-mobile {
+    display: block;
+    }
+    .backdrop-color{
+        background-color: rgba(255, 255, 255, 1);
+    }
+}
+
+</style>
+<br>
+<!-- <div>
+    {% if cookie != None %}
+        {{cookie}}
+    {%endif%}
+</div> -->
+<div class="container">
+    <!-- <div class="row" >
+        <div class="col-sm-4 offset-sm-4 col-md-4 offset-md-4 col-lg-4 offset-lg-4 " style="background-color: white">
+            <h1 style="margin-left: auto; margin-right: auto; text-align: center" >Sign up</h1>
+        </div>
+    </div>
+    <br> -->
+    <div class="row">
+        <div class="col-sm-4 offset-sm-4 col-md-4 offset-md-4 col-lg-4 offset-lg-4 backdrop-color"  style="border-radius: 5px; padding-top: 2.5px;">
+            <h1 style="margin-left: auto; margin-right: auto; text-align: center" >Sign up</h1>
+            <br>
+            <form class="form-inlin justify-content-center" action="/db_check" method="POST" onsubmit="return validate()">
+                <!-- https://smith.ai/blog/how-send-email-text-message-and-text-via-email -->
+                <label for="first_name">First name</label>
+                <br>
+                <input type="text" class = "form-control" name="first_name" id = "first_name">
+                <br>
+                <label for="last_name">Last name</label>
+                <br>
+                <input type="text" name="last_name" class = "form-control" id = "last_name">
+                <br>
+                <label for="email">Email</label>
+                <br>
+                <input type="text" name="email" class = "form-control"  id = "email_input">
+                <br>
+                <label for="phonenum">Phone # (xxx-xxx-xxxx)</label>
+                <br>
+                <input maxlength="12" type="text" name="phonenum" class = "form-control" id = "phonenum">
+                <br>
+                <label for="carrier">Carrier</label>
+                <br>
+                <select name="carrier" id="carrier" class = "form-control">
+                    <option>
+                        AT&T
+                    </option>
+                    <option>
+                        T-Mobile
+                    </option>
+                    <option>
+                        Sprint
+                    </option>
+                    <option>
+                        Verizon
+                    </option>
+                    <option>
+                        Virgin Mobile
+                    </option>
+                </select>
+                <br>
+                <label for="trigger_limit">Notification Limit</label>
+                <br>
+                <select name="trigger_limit" id="trigger_limit" class = "form-control">
+                    <option>
+                        100
+                    </option>
+                    <option>
+                        250
+                    </option>
+                    <option>
+                        500
+                    </option>
+                    <option>
+                        1000
+                    </option>
+                    <option>
+                        2500
+                    </option>
+                    <option>
+                        5000
+                    </option>
+                </select>
+                <br>
+                <label for="password">Password</label>
+                <br>
+                <input type="password" name="password" class = "form-control" id = "password">
+                <br>
+                <label for="password">Confirm Password</label>
+                <br>
+                <input type="password" name="confpassword" class = "form-control" id = "confpassword">
+                <br>
+                <div style= "align-content: center; text-align: center" class="text-center">
+                <input type="submit" style="margin-left: auto; margin-right: auto; text-align: center" class="btn btn-primary text-center center-block" value = "Proceed to payment">
+                </div>
+                </form>
+                <!-- <label for="purchase">Submit and purchase:</label>
+                <br>
+                
+                <div id = "purchase">
+                    <form id ="purchase" class = "btn btn-primary" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                            <input type="hidden" name="cmd" value="_s-xclick">
+                            <input type="hidden" name="hosted_button_id" value="M23BFMPLG36JW">
+                            <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                            <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                            </form>
+                            
+                            
+                            
+                            
+                        
+                </div>  -->
+                
+                <br>
+            <!-- </form> -->
+            </div>
+        </div>
+<br>
+</div>
+<script type="text/javascript">
+function validate(){
+var email = document.getElementById("email_input").value
+var phone = document.getElementById("phonenum").value
+var password = document.getElementById("password").value
+var carrier = document.getElementById("carrier").value
+var trigger_limit = document.getElementById("trigger_limit").value
+var confpassword = document.getElementById("confpassword").value
+var first_name = document.getElementById("first_name").value
+var last_name = document.getElementById("last_name").value
+var emptyfields = "The following must be filled out:"
+if (first_name.match(/^$\s*/)){
+    emptyfields=emptyfields+"\nFirst name cannot be empty"
+}
+if (last_name.match(/^$\s*/)){
+    emptyfields=emptyfields+"\nLast name cannot be empty"
+}
+if (email.match(/^$\s*/)){
+    emptyfields=emptyfields+"\nEmail cannot be empty"
+}
+if (phone.match(/^$\s*/)){
+    emptyfields=emptyfields+"\nPhone number cannot be empty"
+}
+if (password.match(/^$\s*/)){
+    emptyfields=emptyfields+"\nPassword cannot be empty"
+}
+if (confpassword.match(/^$\s*/)){
+    emptyfields=emptyfields+"\nConfirming password cannot be empty"
+}
+if (emptyfields!="The following must be filled out:"){
+    alert(emptyfields)
+    return false
+}
+
+password = md5(password)
+confpassword = md5(confpassword)
+document.getElementById("password").value = password
+document.getElementById("confpassword").value = confpassword
+var passmatch
+var emailvalid
+var phonevalid
+if (password == confpassword){
+    passmatch = true
+}
+else{
+    passmatch = false
+}
+var re = /.*@.*\..*/
+if (email.match(re) == null){
+    emailvalid = false
+}
+else{emailvalid = true}
+
+var rephone = /\d\d\d-\d\d\d-\d\d\d\d/
+if (phone.match(rephone)==null){
+    phonevalid = false
+}
+else{phonevalid = true}
+var alerttext="The following errors occured:"
+
+if (passmatch == false){
+    alerttext = alerttext+"\nPasswords do not match"
+}
+if (emailvalid == false){
+    alerttext = alerttext+"\nEmail format is incorrect"
+}
+if (phonevalid == false){
+    alerttext = alerttext+"\nPhone number format is incorrect"
+}
+
+
+if (alerttext != "The following errors occured:"){
+   alert(alerttext) 
+   return false
+}
+
+// setCookie("email", email)
+// setCookie("password", password)
+// setCookie("first_name", first_name)
+// setCookie("last_name", last_name)
+// setCookie("carrier", carrier)
+// setCookie("phone", phone)
+// setCookie("trigger_limit", trigger_limit)
+return true
+
+
+}
+</script>
+
+<script>
+    function setCookie(key, value)  
+    {  
+        document.cookie = key + "=" + value + "; path=/";  
+    }  
+</script>
+
+{% endblock %}

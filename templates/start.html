@@ -1,0 +1,103 @@
+{% extends "layout.html" %}
+{% block content %}
+<style>
+
+        .custom-button{
+            color: rgb(0, 0, 0)
+        }
+        .custom-button:hover{
+            color: rgb(0, 123, 255)
+        }
+
+    .signuplogin{
+    width:100%;
+    text-decoration:none;
+    padding: 10px;
+    /* background-color: rgba(65, 201, 180, 0.65) !important; */
+    background-color: rgba(197, 76, 29, 0.65)!important;
+    color:#dddddd;
+    text-align:center;
+    cursor:pointer;
+    transition:.5s ease;
+    }
+    .signuplogin:hover {
+      /* background:#01986F; */
+      color:#ffffff;
+      /* background-color:#1fd4a4 !important; */
+      background-color: rgba(240, 93, 34, 1) !important; 
+    }
+  
+  .activebutton {
+    background:#1ab188;
+    color:white;
+  }
+     @media only screen and (max-device-width: 480px) {
+      .show-mobile {
+        display: block;
+      }
+      .hide-mobile {
+        display: none;
+      }
+      .mover{
+        margin-left:0;
+      }
+    }
+
+    @media only screen and (min-device-width: 481px) {
+      .show-mobile {
+        display: none;
+      }
+      .hide-mobile {
+        display: block;
+      }
+      .mover{
+        margin-left:-10%
+      }
+    }
+</style>
+<br>
+<div class="container">
+    <div class = "row">
+        <div class="col-sm-8 offset-sm-2 col-md-8 offset-md-2 col-lg-8 offset-lg-2">
+          <h1 style="align-content: center; color: #ffffff !important;" class="text-center"><img src="{{url_for('static', filename='img/logo.PNG')}}" class = "mover" alt="logo"> Transaction Trends</h1>
+        </div>
+    </div>
+    <h3 style="align-content: center; color: #ffffff !important" class="text-center">Get the competitive edge with real-time add/drop fantasy football data</h3>
+    <br>
+    <div class="row" style="align-content: center">
+        <div class="col-sm-3 offset-sm-3 col-md-3 offset-md-3 col-lg-3 offset-lg-3">
+            <div class="col-sm col-md  col-lg text-center center-block" style="align-content: center; color: black !important">
+              <a href="/signup"><button class = "signuplogin btn" style="border-radius: 0px !important"><h3>Sign up</h3></button></a>
+            </div>
+        </div>
+        <div class="col-sm-3 col-md-3col-lg-3 show-mobile"> 
+            <br class="show-mobile">
+        </div>
+        <div class="col-sm-3 col-md-3  col-lg-3 ">
+        <div class="col-sm col-md  col-lg text-center center-block" style="align-content: center; color: black !important">
+            <a href="/login"><button class = "signuplogin btn" style="border-radius: 0px !important"><h3>Login</h3></button></a>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class = "row">
+      <div class="col-sm-6 offset-sm-3 col-md-6 offset-md-3 col-lg-6 offset-lg-3">
+        <h5 style="align-content: center; color: rgb(62, 151, 216) !important; background-color: rgba(0, 0, 0, 0.65); border-radius: 5px; padding-top: 2.5px; padding-bottom: 2.5px" class="text-center">For less than 8¢ a day, get live texts to maximize the waiver wire and YOUR edge-up on the competition</h5>
+      </div>
+    </div>
+    <br>
+    <div class = "row" style="align-content: center">
+        <div class="col-sm-4 offset-sm-4 col-md-4 offset-md-4 col-lg-4 offset-lg-4">
+          <img alt="ff logo" style="max-width: 100%; height: auto" src="{{url_for('static', filename='img/ff_logo.PNG')}}">
+      </div>
+    </div>
+    <br>
+    <div style="align-content: center;" class="text-center">
+    <a href="/tos"><button class="btn btn-xs btn-outline-primary" style="border-color: white; color: black !important; background-color: white !important"><h7 class="custom-button">Terms of Use</h7></button></a>
+    </div>
+    </div>
+   <br class="show-mobile">
+   
+</div>
+
+{% endblock %}
