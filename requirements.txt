@@ -52,7 +52,7 @@ Flask-SocketIO==4.1.0
 python-engineio==3.8.2.post1
 python-socketio==4.2.0
 dnspython==1.16.0
-eventlet==0.25.0
+eventlet==0.31.0
 monotonic==1.5
 pypay==0.2.1
 flask-login==0.4.1
